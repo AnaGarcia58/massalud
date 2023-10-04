@@ -2,6 +2,8 @@ package AccesoData;
 
 import Entidades.Afiliado;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class AfiliadoData {
@@ -97,6 +99,48 @@ public class AfiliadoData {
         }
 
     }
+    
+    public List<Afiliado> listarAfiliadosActivos() {
+        List<Afiliado> afiliados = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Afiliado WHERE estado = 1";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Afiliado afiliado = new Afiliado();
+                afiliado.setIdAfiliado(rs.getInt("idAfiliado"));
+                afiliado.setNombre(rs.getString("nombre"));
+                afiliado.setApellido(rs.getString("apellido"));
+                afiliado.setDni(rs.getInt("dni"));
+                afiliado.setEstado(rs.getBoolean("estado"));
+                afiliados.add(afiliado);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliados" + ex.getMessage());
+        }
+        return afiliados;
+    }
         
-        
+      public List<Afiliado> listarAfiliadosInactivos() {
+        List<Afiliado> afiliados = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM Afiliado WHERE estado = 0";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Afiliado afiliado = new Afiliado();
+                afiliado.setIdAfiliado(rs.getInt("idAfiliado"));
+                afiliado.setNombre(rs.getString("nombre"));
+                afiliado.setApellido(rs.getString("apellido"));
+                afiliado.setDni(rs.getInt("dni"));
+                afiliado.setEstado(rs.getBoolean("estado"));
+                afiliados.add(afiliado);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliados" + ex.getMessage());
+        }
+        return afiliados;
+    }  
 }
