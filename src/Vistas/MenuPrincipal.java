@@ -34,7 +34,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jGestionPrestadores = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jGestionEspecialidades = new javax.swing.JMenuItem();
+        jMenuItemAgregar = new javax.swing.JMenuItem();
+        jMenuItemEditar = new javax.swing.JMenuItem();
+        jMenuItemBuscar = new javax.swing.JMenuItem();
         jGestionOrdenes = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu1Salir = new javax.swing.JMenu();
@@ -109,8 +111,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Especialidades.jpg"))); // NOI18N
         jMenu3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
 
-        jGestionEspecialidades.setText("Gestion Especialidades");
-        jMenu3.add(jGestionEspecialidades);
+        jMenuItemAgregar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemAgregar.setText("Agregar Especialidad");
+        jMenuItemAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAgregarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemAgregar);
+
+        jMenuItemEditar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemEditar.setText("Editar Especialidad");
+        jMenuItemEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemEditar);
+
+        jMenuItemBuscar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemBuscar.setText("Buscar Especialidad ");
+        jMenuItemBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemBuscarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemBuscar);
 
         jMenuBar1.add(jMenu3);
 
@@ -182,6 +208,44 @@ public class MenuPrincipal extends javax.swing.JFrame {
         modificarAfiliado.setLocation(x, y);   
     }//GEN-LAST:event_jMenuItem1ModificarAfiliadoActionPerformed
 
+    private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        JInternalFrameAddEspecialidad internalView = new JInternalFrameAddEspecialidad();
+        internalView.setVisible(true);
+        escritorio.add(internalView);
+        escritorio.moveToFront(internalView);
+        int x = (escritorio.getWidth() - internalView.getWidth()) / 2;
+        int y = (escritorio.getHeight() - internalView.getHeight()) / 2;
+        internalView.setLocation(x, y);
+
+    }//GEN-LAST:event_jMenuItemAgregarActionPerformed
+
+    private void jMenuItemEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        JInternalFrameEditEspecialidad internalView = new JInternalFrameEditEspecialidad();
+        internalView.setVisible(true);
+        escritorio.add(internalView);
+        escritorio.moveToFront(internalView);
+        int x = (escritorio.getWidth() - internalView.getWidth()) / 2;
+        int y = (escritorio.getHeight() - internalView.getHeight()) / 2;
+        internalView.setLocation(x, y);
+
+    }//GEN-LAST:event_jMenuItemEditarActionPerformed
+
+    private void jMenuItemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        JInternalFrameSearchEspecialidad internalView = new JInternalFrameSearchEspecialidad();
+        internalView.setVisible(true);
+        escritorio.add(internalView);
+        escritorio.moveToFront(internalView);
+        int x = (escritorio.getWidth() - internalView.getWidth()) / 2;
+        int y = (escritorio.getHeight() - internalView.getHeight()) / 2;
+        internalView.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItemBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -219,7 +283,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
-    private javax.swing.JMenuItem jGestionEspecialidades;
     private javax.swing.JMenu jGestionOrdenes;
     private javax.swing.JMenuItem jGestionPrestadores;
     private javax.swing.JMenuItem jMGuardarAfiliado;
@@ -233,5 +296,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2DarBajaAfiliado;
     private javax.swing.JMenuItem jMenuItem3DarAltaAfiliado;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItemAgregar;
+    private javax.swing.JMenuItem jMenuItemBuscar;
+    private javax.swing.JMenuItem jMenuItemEditar;
     // End of variables declaration//GEN-END:variables
 }

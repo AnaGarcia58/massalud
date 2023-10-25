@@ -23,10 +23,10 @@ public class Massalud {
 //      ad.bajaAfiliado(1234569);
 //        ad.modificarAfiliadoSinEstado(afiliado,1234888);
 //        ad.darDeAlta(afiliado);
-        Especialidad especialidad = new Especialidad("Oculista", false);
-        EspecialidadData ed = new EspecialidadData();
-//        ed.guardarEspecialidad(especialidad);
-        ed.darBaja(1);
+//        Especialidad especialidad = new Especialidad("Oculista", false);
+//        EspecialidadData ed = new EspecialidadData();
+////        ed.guardarEspecialidad(especialidad);
+//        ed.darBaja(1);
     }
     
 }

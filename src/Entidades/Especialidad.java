@@ -10,6 +10,10 @@ public class Especialidad {
     public Especialidad() {
     }
 
+    public Especialidad(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Especialidad(int idEspecialidad, String nombre, boolean estado) {
         this.idEspecialidad = idEspecialidad;
         this.nombre = nombre;
@@ -47,7 +51,7 @@ public class Especialidad {
 
     @Override
     public String toString() {
-        return "Especialidad{" + "idEspecialidad=" + idEspecialidad + ", nombre=" + nombre + ", estado=" + estado + '}';
+        return idEspecialidad + ", " + nombre ;
     } 
       
     

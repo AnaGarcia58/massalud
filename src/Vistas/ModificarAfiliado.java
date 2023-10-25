@@ -193,14 +193,14 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField1DniABuscarActionPerformed
 
     private void jButton1BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1BuscarActionPerformed
-        AfiliadoData ad = new AfiliadoData();
-        Afiliado afiliado = ad.buscarAfiliado(Integer.valueOf(jTextField1DniABuscar.getText()));
-        if (afiliado != null) {
-            jTextFieldNombre.setText(afiliado.getNombre());
-            jTextFieldApellido.setText(afiliado.getApellido());
-            jTextField1DniABuscar.setEnabled(false);
-            jButton1Buscar.setEnabled(false);
-        }
+//        AfiliadoData ad = new AfiliadoData();
+//        Afiliado afiliado = ad.buscarAfiliado(Integer.valueOf(jTextField1DniABuscar.getText()));
+//        if (afiliado != null) {
+//            jTextFieldNombre.setText(afiliado.getNombre());
+//            jTextFieldApellido.setText(afiliado.getApellido());
+//            jTextField1DniABuscar.setEnabled(false);
+//            jButton1Buscar.setEnabled(false);
+//        }
     }//GEN-LAST:event_jButton1BuscarActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
@@ -213,7 +213,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         if (validar()) {
             afiliadomodificado.setNombre(jTextFieldNombre.getText());
             afiliadomodificado.setApellido(jTextFieldApellido.getText());
-            ad.modificarAfiliadoSinEstado(afiliadomodificado);
+           // ad.modificarAfiliadoSinEstado(afiliadomodificado);
         }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 

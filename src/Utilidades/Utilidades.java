@@ -46,5 +46,13 @@ public class Utilidades {
 
         return matcher.matches(); // retorna verdadero si el patron que le pasamos arriba se cumple con el texto.
     }
+    
+    public static boolean contieneSoloNumeros(JTextField texto) {
+        Pattern pattern = Pattern.compile("[0-9]+");// Valida que solo sean numeros (expresiones regulares)
+        Matcher matcher = pattern.matcher(texto.getText()); // Compara el texto con lo que le pasamos de patron.
+
+        return matcher.matches(); // retorna verdadero si el patron que le pasamos arriba se cumple con el texto.
+    }
+    
 
 }

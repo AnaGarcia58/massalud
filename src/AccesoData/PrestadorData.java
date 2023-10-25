@@ -52,7 +52,7 @@ public class PrestadorData {
                 prestador.setApellido(rs.getString("apellido"));
                 prestador.setDni(rs.getInt("dni"));
                 prestador.setEstado(rs.getBoolean("estado"));
-                prestador.setEspecialidad(rs.getInt("idEspecialidad"));//REVER!!!!!!!!
+              //  prestador.setEspecialidad(rs.getInt("idEspecialidad"));//REVER!!!!!!!!
 
                 prestadores.add(prestador);
             }

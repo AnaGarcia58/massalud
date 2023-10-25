@@ -2,9 +2,12 @@
 package AccesoData;
 
 import Entidades.Especialidad;
+import Exceptions.GenericException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -16,10 +19,13 @@ public class EspecialidadData {
         this.connection = Conexion.getConexion();
     }
     
-   public void AgregarEspecialidad(Especialidad especialidad){
-       String sql = "INSERT INTO Especialidad (nombre, estado) VALUES (?, ?)";
+   public void AgregarEspecialidad(Especialidad especialidad)throws GenericException{
+       
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement;
+            if(esIgualElNombre(especialidad)){
+                String sql = "INSERT INTO Especialidad (nombre, estado) VALUES (?, ?)";
+            preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, especialidad.getNombre());
             preparedStatement.setBoolean(2, especialidad.isEstado());
             preparedStatement.executeUpdate();
@@ -29,6 +35,8 @@ public class EspecialidadData {
                 JOptionPane.showMessageDialog(null, "Especilidad añadida con exito");
             }
             preparedStatement.close();
+            }
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla Especialidad" + ex.getMessage());
         }  
@@ -53,6 +61,29 @@ public class EspecialidadData {
         }
       
    }
+   public void editarEspecialidad(Especialidad especialidad){
+       
+       String upDateCuery = "UPDATE especialidad SET nombre = ?, estado = ? WHERE idEspecialidad = ? ";
+       
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(upDateCuery);
+            
+            preparedStatement.setString(1, especialidad.getNombre());
+            preparedStatement.setBoolean(2, especialidad.isEstado());
+            preparedStatement.setInt(3, especialidad.getIdEspecialidad());
+            int resultValue = preparedStatement.executeUpdate();
+            if (resultValue >= 1){
+                JOptionPane.showMessageDialog(null, "Especialidad fue modificada");
+            }else{
+                JOptionPane.showMessageDialog(null, "Especialidad no válida");
+            }
+            preparedStatement.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EspecialidadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+   }
    public Especialidad buscarEspecialidadPorId(int id){
        
        Especialidad especialidad = null;
@@ -69,10 +100,8 @@ public class EspecialidadData {
                 especialidad.setNombre(resultSet.getString("nombre"));
                 especialidad.setEstado(resultSet.getBoolean("estado"));
                 especialidad.setIdEspecialidad(id);
-            }else
-                JOptionPane.showMessageDialog(null, "Error no existe especialidad");
+            }
 
-            
             preparedStatement.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Especialidad");
@@ -106,4 +135,26 @@ public class EspecialidadData {
         }
        return especialidades;
    }
+   
+    public boolean esIgualElNombre(Especialidad especialidad) throws SQLException, GenericException {
+
+        boolean isTrue;
+        String queryNombre = "SELECT * FROM especialidad WHERE nombre = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(queryNombre);
+        preparedStatement.setString(1, especialidad.getNombre());
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        isTrue = resultSet.next();
+        if (isTrue) {
+            preparedStatement.close();
+            throw new GenericException("No se admiten dos especialidades con el mismo nombre");
+        } else {
+            preparedStatement.close();
+            isTrue = true;
+            return isTrue;
+        }
+
+    }
 }
