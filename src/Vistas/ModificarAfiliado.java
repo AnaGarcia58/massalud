@@ -7,9 +7,13 @@ import javax.swing.JOptionPane;
 
 public class ModificarAfiliado extends javax.swing.JInternalFrame {
 
+    String nombreOriginal = "";
+    String apellidoOriginal = "";
+
     public ModificarAfiliado() {
         initComponents();
         estadoCampos(false);
+        Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
     }
 
     @SuppressWarnings("unchecked")
@@ -56,11 +60,6 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         });
 
         jTextField1DniABuscar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jTextField1DniABuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1DniABuscarActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -71,8 +70,18 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         jLabel6.setText("DNI :");
 
         jTextFieldNombre.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jTextFieldNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldNombreKeyReleased(evt);
+            }
+        });
 
         jTextFieldApellido.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jTextFieldApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldApellidoKeyReleased(evt);
+            }
+        });
 
         jButtonLimpiar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButtonLimpiar.setText("Limpiar");
@@ -83,7 +92,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         });
 
         jButtonGuardar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.setText("Modificar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGuardarActionPerformed(evt);
@@ -118,22 +127,23 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
                                 .addComponent(jTextField1DniABuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton1Buscar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButtonLimpiar)
-                                .addGap(62, 62, 62)
-                                .addComponent(jButtonGuardar)
-                                .addGap(57, 57, 57)
-                                .addComponent(jButtonSalir))
                             .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jButtonLimpiar)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(jButtonGuardar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonSalir))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(28, 28, 28)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextFieldApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 60, Short.MAX_VALUE)
+                .addGap(0, 62, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
         );
@@ -172,10 +182,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,33 +196,58 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
-    private void jTextField1DniABuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1DniABuscarActionPerformed
-    }//GEN-LAST:event_jTextField1DniABuscarActionPerformed
-
     private void jButton1BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1BuscarActionPerformed
-//        AfiliadoData ad = new AfiliadoData();
-//        Afiliado afiliado = ad.buscarAfiliado(Integer.valueOf(jTextField1DniABuscar.getText()));
-//        if (afiliado != null) {
-//            jTextFieldNombre.setText(afiliado.getNombre());
-//            jTextFieldApellido.setText(afiliado.getApellido());
-//            jTextField1DniABuscar.setEnabled(false);
-//            jButton1Buscar.setEnabled(false);
-//        }
+        AfiliadoData ad = new AfiliadoData();
+        if (validarDni()) {
+            Afiliado afiliado = ad.buscarAfiliado(Integer.valueOf(jTextField1DniABuscar.getText()));
+            if (afiliado != null) {
+                jTextFieldNombre.setText(afiliado.getNombre());
+                nombreOriginal = afiliado.getNombre();
+                jTextFieldApellido.setText(afiliado.getApellido());
+                apellidoOriginal = afiliado.getApellido();
+                jTextField1DniABuscar.setEnabled(false);
+                jButton1Buscar.setEnabled(false);
+                estadoCampos(true);
+                jButtonGuardar.setEnabled(false);
+            }
+        }
     }//GEN-LAST:event_jButton1BuscarActionPerformed
-
-    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
-        borrarCampos();
-    }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
         AfiliadoData ad = new AfiliadoData();
-        Afiliado afiliadomodificado = new Afiliado();
+        Afiliado afiliadoModificado = new Afiliado();
+        String nombre = jTextFieldNombre.getText();
+        String apellido = jTextFieldApellido.getText();
         if (validar()) {
-            afiliadomodificado.setNombre(jTextFieldNombre.getText());
-            afiliadomodificado.setApellido(jTextFieldApellido.getText());
-           // ad.modificarAfiliadoSinEstado(afiliadomodificado);
+            afiliadoModificado.setNombre(nombre);
+            afiliadoModificado.setApellido(apellido);
+            afiliadoModificado.setDni(Integer.valueOf(jTextField1DniABuscar.getText()));
+            ad.modificarAfiliadoSinEstado(afiliadoModificado);
+            borrarCampos();
+            Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
         }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
+        borrarCampos();
+        Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
+    }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jTextFieldNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyReleased
+        if (seModifica()) {
+            jButtonGuardar.setEnabled(true);
+        } else {
+            jButtonGuardar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldNombreKeyReleased
+
+    private void jTextFieldApellidoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellidoKeyReleased
+        if (seModifica()) {
+            jButtonGuardar.setEnabled(true);
+        } else {
+            jButtonGuardar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jTextFieldApellidoKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1Buscar;
@@ -238,13 +270,15 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         jTextFieldNombre.setEnabled(estado);
         jTextFieldApellido.setEnabled(estado);
         jButtonGuardar.setEnabled(estado);
-        jButtonLimpiar.setEnabled(estado);
     }
 
     public void borrarCampos() {
         jTextFieldNombre.setText("");
         jTextFieldApellido.setText("");
+        jTextField1DniABuscar.setText("");
         estadoCampos(false);
+        jTextField1DniABuscar.setEnabled(true);
+        jButton1Buscar.setEnabled(true);
     }
 
     public Boolean validar() {
@@ -252,7 +286,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         String apellido = jTextFieldApellido.getText();
 
         // Validaciones de nombre
-        if (nombre.isBlank()) {
+        if (nombre.isBlank() || nombre.contains("Ingrese")) {
             JOptionPane.showMessageDialog(this, "El campo Nombre no debe estar vacío");
             return false;
         } else {
@@ -263,7 +297,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         }
 
         // Validaciones de Apellido
-        if (apellido.isBlank()) {
+        if (apellido.isBlank() || apellido.contains("Ingrese")) {
             JOptionPane.showMessageDialog(this, "El campo Apellido no debe estar vacío.");
             return false;
         } else {
@@ -275,4 +309,31 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         return true;
     }
 
+    public Boolean validarDni() {
+        String dni = jTextField1DniABuscar.getText();
+        if (dni.isEmpty() || dni.contains("Ingrese")) {
+            JOptionPane.showMessageDialog(this, "El campo DNI no debe estar vacío.");
+            return false;
+        }
+        try {
+            if (dni.length() >= 9 || dni.length() <= 6) {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un DNI válido.");
+                return false;
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese datos válidos. En DNI ingrese numeros de 7 u 8 dígitos.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean quedaIgual(String original, String modificado) {
+        return original.equalsIgnoreCase(modificado);
+    }
+
+    private boolean seModifica() {
+        String nombre = jTextFieldNombre.getText();
+        String apellido = jTextFieldApellido.getText();
+        return !(quedaIgual(nombreOriginal, nombre) && quedaIgual(apellidoOriginal, apellido));
+    }
 }

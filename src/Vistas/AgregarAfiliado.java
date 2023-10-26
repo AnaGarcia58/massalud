@@ -126,11 +126,11 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
                             .addComponent(jTextField3Dni, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField2Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
+                        .addGap(56, 56, 56)
                         .addComponent(jButton1Guardar)
-                        .addGap(46, 46, 46)
+                        .addGap(44, 44, 44)
                         .addComponent(jButton1Borrar)
-                        .addGap(57, 57, 57)
+                        .addGap(43, 43, 43)
                         .addComponent(jButton1Salir)))
                 .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -198,7 +198,6 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
     private void jButton1GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1GuardarActionPerformed
         Afiliado nuevoAfiliado = new Afiliado();
         AfiliadoData ad = new AfiliadoData();
-
         if (validar()) {
             nuevoAfiliado.setNombre(jTextField1Nombre.getText());
             nuevoAfiliado.setApellido(jTextField2Apellido.getText());
@@ -212,7 +211,6 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
     private void jButton1BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1BorrarActionPerformed
         borrarCampos();
     }//GEN-LAST:event_jButton1BorrarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1Borrar;
@@ -233,15 +231,18 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
         jTextField1Nombre.setText("");
         jTextField2Apellido.setText("");
         jTextField3Dni.setText("");
+        Utilidades.addPlaceHolder(jTextField1Nombre, "Ingrese el nombre");
+        Utilidades.addPlaceHolder(jTextField2Apellido, "Ingrese el apellido");
+        Utilidades.addPlaceHolder(jTextField3Dni, "Ingrese el DNI");
     }
 
     public Boolean validar() {
         String nombre = jTextField1Nombre.getText();
         String apellido = jTextField2Apellido.getText();
         String dni = jTextField3Dni.getText();
-        
+
         // Validaciones de nombre
-        if (nombre.isBlank()) {
+        if (nombre.isBlank() || nombre.contains("Ingrese")) {
             JOptionPane.showMessageDialog(this, "El campo Nombre no debe estar vacío");
             return false;
         } else {
@@ -252,7 +253,7 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
         }
 
         // Validaciones de Apellido
-        if (apellido.isBlank()) {
+        if (apellido.isEmpty() || apellido.contains("Ingrese")) {
             JOptionPane.showMessageDialog(this, "El campo Apellido no debe estar vacío.");
             return false;
         } else {
@@ -263,19 +264,17 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
         }
 
         // Validaciones de DNI
+        if (dni.isEmpty() || dni.contains("Ingrese")) {
+            JOptionPane.showMessageDialog(this, "El campo DNI no debe estar vacío.");
+            return false;
+        }
         try {
-            if (dni.isBlank()) {
-                JOptionPane.showMessageDialog(this, "El campo DNI no debe estar vacío.");
+            if (dni.length() >= 9 || dni.length() <= 6) {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un DNI válido.");
                 return false;
-            } else {
-                Integer.parseInt(dni);
-                if (dni.length() > 9 && dni.length() < 6) {
-                    JOptionPane.showMessageDialog(this, "Por favor, ingrese un DNI válido.");
-                    return false;
-                }
             }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese solo números enteros.");
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese datos válidos. En DNI ingrese numeros de 7 u 8 dígitos.");
             return false;
         }
         return true;

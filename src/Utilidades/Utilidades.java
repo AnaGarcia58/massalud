@@ -41,7 +41,7 @@ public class Utilidades {
     espacios en blanco y nada más. */
     
     public static boolean contieneSoloLetras(String texto) {
-        Pattern pattern = Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ ]+$");// Valida que solo sean letras (expresiones regulares)
+        Pattern pattern = Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+( +[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ]+)*$");// Valida que solo sean letras (expresiones regulares)
         Matcher matcher = pattern.matcher(texto); // Compara el texto con lo que le pasamos de patron.
 
         return matcher.matches(); // retorna verdadero si el patron que le pasamos arriba se cumple con el texto.
