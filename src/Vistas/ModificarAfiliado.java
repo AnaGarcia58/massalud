@@ -60,6 +60,11 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         });
 
         jTextField1DniABuscar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jTextField1DniABuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1DniABuscarActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -196,6 +201,9 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+    private void jTextField1DniABuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1DniABuscarActionPerformed
+    }//GEN-LAST:event_jTextField1DniABuscarActionPerformed
+
     private void jButton1BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1BuscarActionPerformed
         AfiliadoData ad = new AfiliadoData();
         if (validarDni()) {
@@ -214,18 +222,18 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1BuscarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-//        AfiliadoData ad = new AfiliadoData();
-//        Afiliado afiliadoModificado = new Afiliado();
-//        String nombre = jTextFieldNombre.getText();
-//        String apellido = jTextFieldApellido.getText();
-//        if (validar()) {
-//            afiliadoModificado.setNombre(nombre);
-//            afiliadoModificado.setApellido(apellido);
-//            afiliadoModificado.setDni(Integer.valueOf(jTextField1DniABuscar.getText()));
-//            ad.modificarAfiliadoSinEstado(afiliadoModificado);
-//            borrarCampos();
-//            Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
-//        }
+        AfiliadoData ad = new AfiliadoData();
+        Afiliado afiliadoModificado = new Afiliado();
+        String nombre = jTextFieldNombre.getText();
+        String apellido = jTextFieldApellido.getText();
+        if (validar()) {
+            afiliadoModificado.setNombre(nombre);
+            afiliadoModificado.setApellido(apellido);
+            afiliadoModificado.setDni(Integer.valueOf(jTextField1DniABuscar.getText()));
+            ad.modificarAfiliadoSinEstado(afiliadoModificado);
+            borrarCampos();
+            Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
+        }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
@@ -329,6 +337,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
 
     private boolean quedaIgual(String original, String modificado) {
         return original.equalsIgnoreCase(modificado);
+
     }
 
     private boolean seModifica() {

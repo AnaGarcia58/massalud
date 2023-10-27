@@ -26,11 +26,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1VerAfiliados = new javax.swing.JMenu();
-        jMGuardarAfiliado = new javax.swing.JMenuItem();
-        jMenuItem1ModificarAfiliado = new javax.swing.JMenuItem();
-        jMenuItem2DarBajaAfiliado = new javax.swing.JMenuItem();
-        jMenuItem3DarAltaAfiliado = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2DarBajaAfiliado = new javax.swing.JMenuItem();
+        jMenuItem1ModificarAfiliado = new javax.swing.JMenuItem();
+        jMGuardarAfiliado = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jGestionPrestadores = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -61,14 +60,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu1VerAfiliados.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jMenu1VerAfiliados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jMGuardarAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jMGuardarAfiliado.setText("Nuevo Afiliado");
-        jMGuardarAfiliado.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItem1.setText("Ver Afiliados");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMGuardarAfiliadoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1VerAfiliados.add(jMGuardarAfiliado);
+        jMenu1VerAfiliados.add(jMenuItem1);
+
+        jMenuItem2DarBajaAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItem2DarBajaAfiliado.setText("Afiliar o Eliminar Afiliado");
+        jMenuItem2DarBajaAfiliado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2DarBajaAfiliadoActionPerformed(evt);
+            }
+        });
+        jMenu1VerAfiliados.add(jMenuItem2DarBajaAfiliado);
 
         jMenuItem1ModificarAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jMenuItem1ModificarAfiliado.setText("Modificar Afiliado");
@@ -79,17 +87,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu1VerAfiliados.add(jMenuItem1ModificarAfiliado);
 
-        jMenuItem2DarBajaAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jMenuItem2DarBajaAfiliado.setText("Dar de baja al Afiliado");
-        jMenu1VerAfiliados.add(jMenuItem2DarBajaAfiliado);
-
-        jMenuItem3DarAltaAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jMenuItem3DarAltaAfiliado.setText("Dar de alta Afiliado");
-        jMenu1VerAfiliados.add(jMenuItem3DarAltaAfiliado);
-
-        jMenuItem1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jMenuItem1.setText("Ver Afiliados");
-        jMenu1VerAfiliados.add(jMenuItem1);
+        jMGuardarAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMGuardarAfiliado.setText("Nuevo Afiliado");
+        jMGuardarAfiliado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMGuardarAfiliadoActionPerformed(evt);
+            }
+        });
+        jMenu1VerAfiliados.add(jMGuardarAfiliado);
 
         jMenuBar1.add(jMenu1VerAfiliados);
 
@@ -175,9 +180,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jGestionOrdenes);
 
         jMenu1Salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Salir.jpg"))); // NOI18N
-        jMenu1Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1SalirActionPerformed(evt);
+        jMenu1Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1SalirMouseClicked(evt);
             }
         });
         jMenuBar1.add(jMenu1Salir);
@@ -197,34 +202,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMGuardarAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGuardarAfiliadoActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        AgregarAfiliado agregarAfiliado = new AgregarAfiliado();
-        agregarAfiliado.setVisible(true);
-        escritorio.add(agregarAfiliado);
-        escritorio.moveToFront(agregarAfiliado);
-        int x = (escritorio.getWidth() - agregarAfiliado.getWidth()) / 2;
-        int y = (escritorio.getHeight() - agregarAfiliado.getHeight()) / 2;
-        agregarAfiliado.setLocation(x, y);
-    }//GEN-LAST:event_jMGuardarAfiliadoActionPerformed
-
-    private void jMenu1SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1SalirActionPerformed
-      this.dispose();
-    }//GEN-LAST:event_jMenu1SalirActionPerformed
-
-    private void jMenuItem1ModificarAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ModificarAfiliadoActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        ModificarAfiliado modificarAfiliado = new ModificarAfiliado();
-        modificarAfiliado.setVisible(true);
-        escritorio.add(modificarAfiliado);
-        escritorio.moveToFront(modificarAfiliado);
-        int x = (escritorio.getWidth() - modificarAfiliado.getWidth()) / 2;
-        int y = (escritorio.getHeight() - modificarAfiliado.getHeight()) / 2;
-        modificarAfiliado.setLocation(x, y);   
-    }//GEN-LAST:event_jMenuItem1ModificarAfiliadoActionPerformed
 
     private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
         escritorio.removeAll();
@@ -308,8 +285,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int y = (escritorio.getHeight() - consultarOrdenesPorAfiliado.getHeight()) / 2;
         consultarOrdenesPorAfiliado.setLocation(x, y);
     }//GEN-LAST:event_jMenuConsultarOrdenesPorAfiliadoOPrestadorActionPerformed
-    
-       
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        VerAfiliados verAfiliados = new VerAfiliados();
+        verAfiliados.setVisible(true);
+        escritorio.add(verAfiliados);
+        escritorio.moveToFront(verAfiliados);
+        int x = (escritorio.getWidth() - verAfiliados.getWidth()) / 2;
+        int y = (escritorio.getHeight() - verAfiliados.getHeight()) / 2;
+        verAfiliados.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2DarBajaAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2DarBajaAfiliadoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        DarBajaAltaAfiliado bajaAfiliado = new DarBajaAltaAfiliado();
+        bajaAfiliado.setVisible(true);
+        escritorio.add(bajaAfiliado);
+        escritorio.moveToFront(bajaAfiliado);
+        int x = (escritorio.getWidth() - bajaAfiliado.getWidth()) / 2;
+        int y = (escritorio.getHeight() - bajaAfiliado.getHeight()) / 2;
+        bajaAfiliado.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItem2DarBajaAfiliadoActionPerformed
+
+    private void jMenuItem1ModificarAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ModificarAfiliadoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ModificarAfiliado modificarAfiliado = new ModificarAfiliado();
+        modificarAfiliado.setVisible(true);
+        escritorio.add(modificarAfiliado);
+        escritorio.moveToFront(modificarAfiliado);
+        int x = (escritorio.getWidth() - modificarAfiliado.getWidth()) / 2;
+        int y = (escritorio.getHeight() - modificarAfiliado.getHeight()) / 2;
+        modificarAfiliado.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItem1ModificarAfiliadoActionPerformed
+
+    private void jMGuardarAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGuardarAfiliadoActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AgregarAfiliado agregarAfiliado = new AgregarAfiliado();
+        agregarAfiliado.setVisible(true);
+        escritorio.add(agregarAfiliado);
+        escritorio.moveToFront(agregarAfiliado);
+        int x = (escritorio.getWidth() - agregarAfiliado.getWidth()) / 2;
+        int y = (escritorio.getHeight() - agregarAfiliado.getHeight()) / 2;
+        agregarAfiliado.setLocation(x, y);
+    }//GEN-LAST:event_jMGuardarAfiliadoActionPerformed
+
+    private void jMenu1SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1SalirMouseClicked
+      dispose();
+    }//GEN-LAST:event_jMenu1SalirMouseClicked
+
     
     /**
      * @param args the command line arguments
@@ -363,7 +391,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1ModificarAfiliado;
     private javax.swing.JMenuItem jMenuItem2DarBajaAfiliado;
-    private javax.swing.JMenuItem jMenuItem3DarAltaAfiliado;
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemBuscar;
     private javax.swing.JMenuItem jMenuItemEditar;

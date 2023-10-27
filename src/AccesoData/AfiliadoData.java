@@ -55,32 +55,25 @@ public class AfiliadoData {
 
     }
 
-    public void modificarAfiliadoSinEstado(Afiliado afiliado,int dni) {
-
+    public void modificarAfiliadoSinEstado(Afiliado afiliado) {
         String sql = "UPDATE Afiliado SET nombre=?, apellido=?, dni=? WHERE dni=?";
-
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, afiliado.getNombre());
             ps.setString(2, afiliado.getApellido());
-            ps.setInt(3,dni);
+            ps.setInt(3, afiliado.getDni());
             ps.setInt(4, afiliado.getDni());
-
             int exito = ps.executeUpdate();
-
             if (exito >= 1) {
                 JOptionPane.showMessageDialog(null, "Se modificó el afiliado");
             } else {
                 JOptionPane.showMessageDialog(null, "El dni ingresado no es válido");
             }
             ps.close();
-
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla afiliado" + ex.getMessage());
         }
-
     }
-    
     public void darDeAlta(Afiliado afiliado){
         String sql = "UPDATE Afiliado SET estado=1 WHERE dni=?";
         try {
@@ -97,7 +90,23 @@ public class AfiliadoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se puede acceder a la tabla afiliado" + ex.getMessage());
         }
-
+    }
+    
+    public void darDeAlta(int dni) {
+        String sql = "UPDATE Afiliado SET estado=1 WHERE dni=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, dni);
+            int res = ps.executeUpdate();
+            if (res >= 1) {
+                JOptionPane.showMessageDialog(null, "Afiliado dado de alta");
+            } else {
+                JOptionPane.showMessageDialog(null, "El afiliado no es válido");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se puede acceder a la tabla afiliado" + ex.getMessage());
+        }
     }
     
     public List<Afiliado> listarAfiliadosActivos() {
@@ -144,26 +153,27 @@ public class AfiliadoData {
         return afiliados;
     }
          
-    public Afiliado buscarAfiliado(int id) {
+    public Afiliado buscarAfiliado(int dni) {
         Afiliado afiliado = null;
-        String sql = "SELECT dni, nombre, apellido, estado FROM afiliado WHERE idAfiliado = ? AND estado = 1";
+        String sql = "SELECT idAfiliado, dni, nombre, apellido, estado FROM afiliado WHERE dni = ?";
+        PreparedStatement ps = null;
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, dni);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 afiliado = new Afiliado();
-                afiliado.setIdAfiliado(id);
+                afiliado.setIdAfiliado(rs.getInt("idAfiliado"));
                 afiliado.setDni(rs.getInt("dni"));
                 afiliado.setNombre(rs.getString("nombre"));
                 afiliado.setApellido(rs.getString("apellido"));
-                afiliado.setEstado(true);
+                afiliado.setEstado(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No existe el afiliado");
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado " + ex.getMessage());
         }
         return afiliado;
     }
