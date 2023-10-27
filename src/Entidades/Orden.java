@@ -11,26 +11,38 @@ public class Orden {
     private double importe;
     private Afiliado afiliado;
     private Prestador prestador;
+    private boolean estado;
+    private String mensaje;
+
+    public Orden(String mensaje) {
+        this.mensaje = mensaje;
+    }
 
     public Orden() {
     }
 
-    public Orden(int idOrden, LocalDate fecha, String formaPago, double importe, Afiliado afiliado, Prestador prestador) {
+    
+    
+    public Orden(int idOrden, LocalDate fecha, String formaPago, double importe, Afiliado afiliado, Prestador prestador, boolean estado) {
         this.idOrden = idOrden;
         this.fecha = fecha;
         this.formaPago = formaPago;
         this.importe = importe;
         this.afiliado = afiliado;
         this.prestador = prestador;
+        this.estado = estado;
     }
 
-    public Orden(LocalDate fecha, String formaPago, double importe, Afiliado afiliado, Prestador prestador) {
+    public Orden(LocalDate fecha, String formaPago, double importe, Afiliado afiliado, Prestador prestador, boolean estado) {
         this.fecha = fecha;
         this.formaPago = formaPago;
         this.importe = importe;
         this.afiliado = afiliado;
         this.prestador = prestador;
+        this.estado = estado;
     }
+    
+    
 
     public int getIdOrden() {
         return idOrden;
@@ -80,10 +92,20 @@ public class Orden {
         this.prestador = prestador;
     }
 
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
     @Override
     public String toString() {
-        return "Orden{" + "idOrden=" + idOrden + ", fecha=" + fecha + ", formaPago=" + formaPago + ", importe=" + importe + ", afiliado=" + afiliado + ", prestador=" + prestador + '}';
+        return "Orden{" + "idOrden=" + idOrden + ", fecha=" + fecha + ", formaPago=" + formaPago + ", importe=" + importe + ", afiliado=" + afiliado + ", prestador=" + prestador + ", estado=" + estado + '}';
     }
+    
+    
     
     
     

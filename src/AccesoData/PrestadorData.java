@@ -1,6 +1,7 @@
 
 package AccesoData;
 
+import Entidades.Especialidad;
 import Entidades.Prestador;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import javax.swing.JOptionPane;
 public class PrestadorData {
 
     private Connection connection = null;
-
+    EspecialidadData ed = new EspecialidadData();
+    
     public PrestadorData() { //cada vez que creas un obj de tipo Afiliado estamos creando una conexión a la base de datos
         this.connection = Conexion.getConexion();
 
@@ -123,5 +125,52 @@ public class PrestadorData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Prestador");
         }
     }
-
+    
+    public Prestador buscarPrestadorPorDni(int dni){
+        Prestador prestador = null;
+        String sql = "SELECT idPrestador, nombre, apellido, dni, estado, idEspecialidad FROM prestador WHERE dni = ? and estado = 1";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                prestador = new Prestador();
+                prestador.setIdPrestador(rs.getInt("idPrestador"));
+                prestador.setNombre(rs.getString("nombre"));
+                prestador.setApellido(rs.getString("apellido"));
+                prestador.setDni(rs.getInt("dni"));
+                prestador.setEstado(rs.getBoolean("estado"));
+                Especialidad especialidad = ed.buscarEspecialidadPorId(rs.getInt("idEspecialidad"));
+                prestador.setEspecialidad(especialidad);
+            } 
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Prestador" + ex.getMessage());
+        }
+        return prestador;
+    }
+    
+    public Prestador buscarPrestadorPorId(int id){
+        Prestador prestador = null;
+        String sql = "SELECT idPrestador, nombre, apellido, dni, estado, idEspecialidad FROM prestador WHERE idPrestador = ? and estado = 1";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                prestador = new Prestador();
+                prestador.setIdPrestador(rs.getInt("idPrestador"));
+                prestador.setNombre(rs.getString("nombre"));
+                prestador.setApellido(rs.getString("apellido"));
+                prestador.setDni(rs.getInt("dni"));
+                prestador.setEstado(rs.getBoolean("estado"));
+                Especialidad especialidad = ed.buscarEspecialidadPorId(rs.getInt("idEspecialidad"));
+                prestador.setEspecialidad(especialidad);
+            } 
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Prestador" + ex.getMessage());
+        }
+        return prestador;
+    }
 }

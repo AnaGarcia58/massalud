@@ -9,8 +9,15 @@ public class Prestador {
     private int dni;
     private boolean estado;
     private Especialidad especialidad;
+    private int indice;
+    private String mensaje;
 
     public Prestador() {
+    }
+    
+    public Prestador(int indice, String mensaje) {
+        this.indice = indice;
+        this.mensaje = mensaje;
     }
 
     public Prestador(int idPrestador, String nombre, String apellido, int dni, boolean estado, Especialidad especialidad) {
@@ -83,6 +90,13 @@ public class Prestador {
         return "Prestador{" + "idPrestador=" + idPrestador + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", estado=" + estado + ", especialidad=" + especialidad + '}';
     }
     
+     public String obtenerPrestadorCombo(){
+        if (indice == -1){
+            return mensaje;
+        }else{
+            return idPrestador + ", " + apellido + ", " + nombre + ", " + dni;
+        }    
+    }
     
     
 }

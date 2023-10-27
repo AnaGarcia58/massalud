@@ -214,18 +214,18 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton1BuscarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        AfiliadoData ad = new AfiliadoData();
-        Afiliado afiliadoModificado = new Afiliado();
-        String nombre = jTextFieldNombre.getText();
-        String apellido = jTextFieldApellido.getText();
-        if (validar()) {
-            afiliadoModificado.setNombre(nombre);
-            afiliadoModificado.setApellido(apellido);
-            afiliadoModificado.setDni(Integer.valueOf(jTextField1DniABuscar.getText()));
-            ad.modificarAfiliadoSinEstado(afiliadoModificado);
-            borrarCampos();
-            Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
-        }
+//        AfiliadoData ad = new AfiliadoData();
+//        Afiliado afiliadoModificado = new Afiliado();
+//        String nombre = jTextFieldNombre.getText();
+//        String apellido = jTextFieldApellido.getText();
+//        if (validar()) {
+//            afiliadoModificado.setNombre(nombre);
+//            afiliadoModificado.setApellido(apellido);
+//            afiliadoModificado.setDni(Integer.valueOf(jTextField1DniABuscar.getText()));
+//            ad.modificarAfiliadoSinEstado(afiliadoModificado);
+//            borrarCampos();
+//            Utilidades.addPlaceHolder(jTextField1DniABuscar, "Ingrese un DNI");
+//        }
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed

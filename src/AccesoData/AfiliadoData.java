@@ -143,6 +143,51 @@ public class AfiliadoData {
         }
         return afiliados;
     }
-        
-        
+         
+    public Afiliado buscarAfiliado(int id) {
+        Afiliado afiliado = null;
+        String sql = "SELECT dni, nombre, apellido, estado FROM afiliado WHERE idAfiliado = ? AND estado = 1";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                afiliado = new Afiliado();
+                afiliado.setIdAfiliado(id);
+                afiliado.setDni(rs.getInt("dni"));
+                afiliado.setNombre(rs.getString("nombre"));
+                afiliado.setApellido(rs.getString("apellido"));
+                afiliado.setEstado(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe el afiliado");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado");
+        }
+        return afiliado;
+    }
+    
+       
+    public Afiliado buscarAfiliadoPorDni(int dni) {
+        Afiliado afiliado = null;
+        String sql = "SELECT idAfiliado, nombre, apellido,dni, estado FROM afiliado WHERE dni = ? AND estado = 1";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                afiliado = new Afiliado();
+                afiliado.setIdAfiliado(rs.getInt("idAfiliado"));
+                afiliado.setDni(rs.getInt("dni"));
+                afiliado.setNombre(rs.getString("nombre"));
+                afiliado.setApellido(rs.getString("apellido"));
+                afiliado.setEstado(true);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Afiliado " + ex.getMessage());
+        }
+        return afiliado;
+    }
 }

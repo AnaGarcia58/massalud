@@ -7,6 +7,11 @@ import javax.swing.JOptionPane;
 
 public class AgregarAfiliado extends javax.swing.JInternalFrame {
 
+    public AgregarAfiliado(String text) {
+        initComponents();
+        jTextField3Dni.setText(text);
+    }
+    
     public AgregarAfiliado() {
         initComponents();
         Utilidades.addPlaceHolder(jTextField1Nombre, "Ingrese el nombre");
@@ -34,44 +39,25 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(153, 220, 153));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Agregar Afiliado");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre: ");
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Apellido: ");
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("DNI: ");
 
         jTextField1Nombre.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jTextField1Nombre.setMinimumSize(new java.awt.Dimension(64, 30));
-        jTextField1Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1NombreActionPerformed(evt);
-            }
-        });
 
         jTextField2Apellido.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jTextField2Apellido.setMinimumSize(new java.awt.Dimension(64, 30));
-        jTextField2Apellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ApellidoActionPerformed(evt);
-            }
-        });
 
         jTextField3Dni.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jTextField3Dni.setMinimumSize(new java.awt.Dimension(64, 30));
-        jTextField3Dni.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3DniActionPerformed(evt);
-            }
-        });
 
         jButton1Guardar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jButton1Guardar.setText("Guardar");
@@ -98,7 +84,6 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Por favor, ingrese los datos del nuevo afiliado:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -178,18 +163,6 @@ public class AgregarAfiliado extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1NombreActionPerformed
-        // TODO addPlaceHolder your handling code here:
-    }//GEN-LAST:event_jTextField1NombreActionPerformed
-
-    private void jTextField2ApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ApellidoActionPerformed
-        // TODO addPlaceHolder your handling code here:
-    }//GEN-LAST:event_jTextField2ApellidoActionPerformed
-
-    private void jTextField3DniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3DniActionPerformed
-        // TODO addPlaceHolder your handling code here:
-    }//GEN-LAST:event_jTextField3DniActionPerformed
 
     private void jButton1SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1SalirActionPerformed
         dispose();

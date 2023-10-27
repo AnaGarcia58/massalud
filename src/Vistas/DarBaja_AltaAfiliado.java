@@ -262,24 +262,24 @@ public class DarBaja_AltaAfiliado extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void JButtonAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonAltaActionPerformed
-        AfiliadoData ad = new AfiliadoData();
-        Afiliado afiliado = new Afiliado();
-        if (validar()) {
-            afiliado.setNombre(jTextFieldNombre.getText());
-            afiliado.setApellido(jTextFieldApellido.getText());
-            afiliado.setDni(Integer.valueOf(jTextFieldDni.getText()));
-            ad.darDeAlta(afiliado.getDni());
-            jTextFieldDNI.setEnabled(true);
-            jTextFieldDNI.setText("");
-            Utilidades.addPlaceHolder(jTextFieldDNI, "Ingrese un DNI");
-            JButtonAlta.setEnabled(false);
-            borrarCampos();
-             if (afiliado.isEstado()) {
-                    jLabelDesafiliado.setVisible(true);
-                    JButtonBaja.setEnabled(true);
-                    JButtonAlta.setEnabled(false);
-        }
-        }
+//        AfiliadoData ad = new AfiliadoData();
+//        Afiliado afiliado = new Afiliado();
+//        if (validar()) {
+//            afiliado.setNombre(jTextFieldNombre.getText());
+//            afiliado.setApellido(jTextFieldApellido.getText());
+//            afiliado.setDni(Integer.valueOf(jTextFieldDni.getText()));
+//            ad.darDeAlta(afiliado.getDni());
+//            jTextFieldDNI.setEnabled(true);
+//            jTextFieldDNI.setText("");
+//            Utilidades.addPlaceHolder(jTextFieldDNI, "Ingrese un DNI");
+//            JButtonAlta.setEnabled(false);
+//            borrarCampos();
+//             if (afiliado.isEstado()) {
+//                    jLabelDesafiliado.setVisible(true);
+//                    JButtonBaja.setEnabled(true);
+//                    JButtonAlta.setEnabled(false);
+//        }
+//        }
     }//GEN-LAST:event_JButtonAltaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

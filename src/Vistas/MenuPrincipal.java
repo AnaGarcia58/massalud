@@ -38,7 +38,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItemEditar = new javax.swing.JMenuItem();
         jMenuItemBuscar = new javax.swing.JMenuItem();
         jGestionOrdenes = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuComprarOrdenes = new javax.swing.JMenuItem();
+        jMenuAnularOrden = new javax.swing.JMenuItem();
+        jMenuConsultarOrdenesPorFecha = new javax.swing.JMenuItem();
+        jMenuConsultarOrdenesPorAfiliadoOPrestador = new javax.swing.JMenuItem();
         jMenu1Salir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,20 +81,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuItem2DarBajaAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jMenuItem2DarBajaAfiliado.setText("Dar de baja al Afiliado");
-        jMenuItem2DarBajaAfiliado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2DarBajaAfiliadoActionPerformed(evt);
-            }
-        });
         jMenu1VerAfiliados.add(jMenuItem2DarBajaAfiliado);
 
         jMenuItem3DarAltaAfiliado.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jMenuItem3DarAltaAfiliado.setText("Dar de alta Afiliado");
-        jMenuItem3DarAltaAfiliado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3DarAltaAfiliadoActionPerformed(evt);
-            }
-        });
         jMenu1VerAfiliados.add(jMenuItem3DarAltaAfiliado);
 
         jMenuItem1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -143,8 +136,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jGestionOrdenes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Ordenes.jpg"))); // NOI18N
         jGestionOrdenes.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
 
-        jMenuItem4.setText("Gestion Ordenes");
-        jGestionOrdenes.add(jMenuItem4);
+        jMenuComprarOrdenes.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuComprarOrdenes.setText("Comprar orden");
+        jMenuComprarOrdenes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuComprarOrdenesActionPerformed(evt);
+            }
+        });
+        jGestionOrdenes.add(jMenuComprarOrdenes);
+
+        jMenuAnularOrden.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuAnularOrden.setText("Anular orden");
+        jMenuAnularOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAnularOrdenActionPerformed(evt);
+            }
+        });
+        jGestionOrdenes.add(jMenuAnularOrden);
+
+        jMenuConsultarOrdenesPorFecha.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuConsultarOrdenesPorFecha.setText("Consultar órdenes según fecha");
+        jMenuConsultarOrdenesPorFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultarOrdenesPorFechaActionPerformed(evt);
+            }
+        });
+        jGestionOrdenes.add(jMenuConsultarOrdenesPorFecha);
+
+        jMenuConsultarOrdenesPorAfiliadoOPrestador.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuConsultarOrdenesPorAfiliadoOPrestador.setText("Consultar órdenes por Afiliado o Prestador");
+        jMenuConsultarOrdenesPorAfiliadoOPrestador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultarOrdenesPorAfiliadoOPrestadorActionPerformed(evt);
+            }
+        });
+        jGestionOrdenes.add(jMenuConsultarOrdenesPorAfiliadoOPrestador);
 
         jMenuBar1.add(jGestionOrdenes);
 
@@ -171,14 +197,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem2DarBajaAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2DarBajaAfiliadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2DarBajaAfiliadoActionPerformed
-
-    private void jMenuItem3DarAltaAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3DarAltaAfiliadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3DarAltaAfiliadoActionPerformed
 
     private void jMGuardarAfiliadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMGuardarAfiliadoActionPerformed
         escritorio.removeAll();
@@ -246,6 +264,53 @@ public class MenuPrincipal extends javax.swing.JFrame {
         internalView.setLocation(x, y);
     }//GEN-LAST:event_jMenuItemBuscarActionPerformed
 
+    private void jMenuComprarOrdenesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuComprarOrdenesActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ComprarOrden comprarOrden = new ComprarOrden(this);
+        comprarOrden.setVisible(true);
+        escritorio.add(comprarOrden);
+        escritorio.moveToFront(comprarOrden);
+        int x = (escritorio.getWidth() - comprarOrden.getWidth()) / 2;
+        int y = (escritorio.getHeight() - comprarOrden.getHeight()) / 2;
+        comprarOrden.setLocation(x, y);
+    }//GEN-LAST:event_jMenuComprarOrdenesActionPerformed
+
+    private void jMenuAnularOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAnularOrdenActionPerformed
+        escritorio.repaint();
+        AnularOrden anularOrden = new AnularOrden();
+        anularOrden.setVisible(true);
+        escritorio.add(anularOrden);
+        escritorio.moveToFront(anularOrden);
+        int x = (escritorio.getWidth() - anularOrden.getWidth()) / 2;
+        int y = (escritorio.getHeight() - anularOrden.getHeight()) / 2;
+        anularOrden.setLocation(x, y);
+    }//GEN-LAST:event_jMenuAnularOrdenActionPerformed
+
+    private void jMenuConsultarOrdenesPorFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultarOrdenesPorFechaActionPerformed
+        escritorio.repaint();
+        ConsultarOrdenesPorFecha consultarPorFecha = new ConsultarOrdenesPorFecha();
+        consultarPorFecha.setVisible(true);
+        escritorio.add(consultarPorFecha);
+        escritorio.moveToFront(consultarPorFecha);
+        int x = (escritorio.getWidth() - consultarPorFecha.getWidth()) / 2;
+        int y = (escritorio.getHeight() - consultarPorFecha.getHeight()) / 2;
+        consultarPorFecha.setLocation(x, y);
+    }//GEN-LAST:event_jMenuConsultarOrdenesPorFechaActionPerformed
+
+    private void jMenuConsultarOrdenesPorAfiliadoOPrestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultarOrdenesPorAfiliadoOPrestadorActionPerformed
+        escritorio.repaint();
+        ConsultarOrdenesPorAfiliadoOPrestador consultarOrdenesPorAfiliado = new ConsultarOrdenesPorAfiliadoOPrestador();
+        consultarOrdenesPorAfiliado.setVisible(true);
+        escritorio.add(consultarOrdenesPorAfiliado);
+        escritorio.moveToFront(consultarOrdenesPorAfiliado);
+        int x = (escritorio.getWidth() - consultarOrdenesPorAfiliado.getWidth()) / 2;
+        int y = (escritorio.getHeight() - consultarOrdenesPorAfiliado.getHeight()) / 2;
+        consultarOrdenesPorAfiliado.setLocation(x, y);
+    }//GEN-LAST:event_jMenuConsultarOrdenesPorAfiliadoOPrestadorActionPerformed
+    
+       
+    
     /**
      * @param args the command line arguments
      */
@@ -290,14 +355,29 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1VerAfiliados;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuItem jMenuAnularOrden;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuComprarOrdenes;
+    private javax.swing.JMenuItem jMenuConsultarOrdenesPorAfiliadoOPrestador;
+    private javax.swing.JMenuItem jMenuConsultarOrdenesPorFecha;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem1ModificarAfiliado;
     private javax.swing.JMenuItem jMenuItem2DarBajaAfiliado;
     private javax.swing.JMenuItem jMenuItem3DarAltaAfiliado;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemBuscar;
     private javax.swing.JMenuItem jMenuItemEditar;
     // End of variables declaration//GEN-END:variables
+ 
+    public void nuevaVista(String dni) {
+        escritorio.repaint();
+        AgregarAfiliado agregarAfiliado = new AgregarAfiliado(dni);
+        agregarAfiliado.setVisible(true);
+        escritorio.add(agregarAfiliado);
+        escritorio.moveToFront(agregarAfiliado);
+        int x = (escritorio.getWidth() - agregarAfiliado.getWidth()) / 2;
+        int y = (escritorio.getHeight() - agregarAfiliado.getHeight()) / 2;
+        agregarAfiliado.setLocation(x, y);
+    }
+    
 }
