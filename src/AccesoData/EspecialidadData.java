@@ -24,7 +24,7 @@ public class EspecialidadData {
         try {
             PreparedStatement preparedStatement;
             if(esIgualElNombre(especialidad)){
-                String sql = "INSERT INTO Especialidad (nombre, estado) VALUES (?, ?)";
+                String sql = "INSERT INTO especialidad (nombre, estado) VALUES (?, ?)";
             preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, especialidad.getNombre());
             preparedStatement.setBoolean(2, especialidad.isEstado());
@@ -43,7 +43,7 @@ public class EspecialidadData {
    }
    
    public void darBajaPorId(int idEspecialidad){ 
-       String sql = "UPDATE Especialidad SET estado = 0 WHERE idEspecialidad = ?";
+       String sql = "UPDATE especialidad SET estado = 0 WHERE idEspecialidad = ?";
        PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -87,7 +87,7 @@ public class EspecialidadData {
    public Especialidad buscarEspecialidadPorId(int id){
        
        Especialidad especialidad = null;
-       String queryEspecialidad = "SELECT * FROM Especialidad WHERE idEspecialidad = ?";
+       String queryEspecialidad = "SELECT * FROM especialidad WHERE idEspecialidad = ?";
        
         try {
             
@@ -114,7 +114,7 @@ public class EspecialidadData {
        List<Especialidad> especialidades = new ArrayList<>();
 
         try {
-            String queryEspecialidad = "SELECT * FROM Especialidad ";
+            String queryEspecialidad = "SELECT * FROM especialidad ";
             PreparedStatement preparedStatement = connection.prepareStatement(queryEspecialidad);
             ResultSet resultSet = preparedStatement.executeQuery();
             

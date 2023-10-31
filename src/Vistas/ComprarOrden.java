@@ -109,6 +109,11 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
         jComboBoxFormaPago.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jComboBoxFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxFormaPago.setSelectedIndex(-1);
+        jComboBoxFormaPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFormaPagoActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jBGuardar.setText("Guardar");
@@ -227,7 +232,7 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
                     .addComponent(jBSalir))
@@ -296,6 +301,10 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jComboBoxFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFormaPagoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxFormaPagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;

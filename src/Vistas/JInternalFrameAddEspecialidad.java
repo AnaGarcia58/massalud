@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Vistas;
 
 import AccesoData.EspecialidadData;
@@ -10,18 +7,17 @@ import Exceptions.GenericException;
 import Utilidades.Utilidades;
 import static Utilidades.Utilidades.addPlaceHolder;
 import java.awt.Color;
-/**
- *
- * @author MaRio
- */
+
 public class JInternalFrameAddEspecialidad extends javax.swing.JInternalFrame {
 
     private EspecialidadData especialidadData;
     private Especialidad especialidad;
     private String textPlaceholder = "Ej: Odontologia";
-    public JInternalFrameAddEspecialidad() {
+    GuardarPrestador guardarPrestador ;
+    public JInternalFrameAddEspecialidad(GuardarPrestador guardarPrestador) {
         
         initComponents();
+        this.guardarPrestador = guardarPrestador;
         stateInTrue();
         clearLabel();
         especialidadData = new EspecialidadData();
@@ -180,6 +176,9 @@ public class JInternalFrameAddEspecialidad extends javax.swing.JInternalFrame {
             
             especialidadData.AgregarEspecialidad(especialidad);
             clearTextField();
+            guardarPrestador.cargarCombo();
+       
+
         } catch (GenericException e) {
             
             showLabelError(e.getMessage());

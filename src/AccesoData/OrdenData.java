@@ -34,7 +34,7 @@ public class OrdenData {
 
             if (comprobarPrestadorFecha(orden)) {
 
-                String insertQuery = "INSERT INTO Orden(fecha,formaPago,importe,idAfiliado,idPrestador,estado) VALUES (?,?,?,?,?,?)";
+                String insertQuery = "INSERT INTO orden(fecha,formaPago,importe,idAfiliado,idPrestador,estado) VALUES (?,?,?,?,?,?)";
 
                 preparedStatement = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setDate(1, java.sql.Date.valueOf(orden.getFecha()));

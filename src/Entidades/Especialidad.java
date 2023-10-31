@@ -9,6 +9,16 @@ public class Especialidad {
 
     public Especialidad() {
     }
+    
+    public Especialidad(int idEspecialidad){
+        this.idEspecialidad = idEspecialidad;
+    }
+    
+    public Especialidad(int idEspecialidad, String nombre) {
+
+        this.idEspecialidad = idEspecialidad;
+        this.nombre = nombre;
+    }
 
     public Especialidad(String nombre) {
         this.nombre = nombre;
@@ -53,6 +63,18 @@ public class Especialidad {
     public String toString() {
         return idEspecialidad + ", " + nombre ;
     } 
+    
+    public String mostrarEnCombo(){
+        return "id: "+idEspecialidad+ " Nombre: " + nombre;
+    }
+    
+    public String obtenerEspecialidadCombo(){
+        if (idEspecialidad == -1){
+            return nombre;
+        }else{
+            return nombre;
+        }    
+    }
       
     
 }

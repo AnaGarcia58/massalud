@@ -6,6 +6,7 @@ import javax.swing.*;
 
 public class MenuPrincipal extends javax.swing.JFrame {
 
+    GuardarPrestador ppe = new GuardarPrestador(this);
   
     public MenuPrincipal() {
         initComponents();
@@ -31,7 +32,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1ModificarAfiliado = new javax.swing.JMenuItem();
         jMGuardarAfiliado = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jGestionPrestadores = new javax.swing.JMenuItem();
+        jMenuPrestadoresPorEspecialidad = new javax.swing.JMenuItem();
+        jMenuItemPrestadoresActivos = new javax.swing.JMenuItem();
+        jMenuItemGuardarPrestador = new javax.swing.JMenuItem();
+        jMenuItemModificarPrestador = new javax.swing.JMenuItem();
+        darDeAltaPrestador = new javax.swing.JMenuItem();
+        jMenuItemEliminarPrestador = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemAgregar = new javax.swing.JMenuItem();
         jMenuItemEditar = new javax.swing.JMenuItem();
@@ -101,8 +107,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/Prestadores.jpg"))); // NOI18N
         jMenu2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
 
-        jGestionPrestadores.setText("Gestion Prestadores");
-        jMenu2.add(jGestionPrestadores);
+        jMenuPrestadoresPorEspecialidad.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuPrestadoresPorEspecialidad.setText("Prestadores por Especialidad");
+        jMenuPrestadoresPorEspecialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrestadoresPorEspecialidadActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuPrestadoresPorEspecialidad);
+
+        jMenuItemPrestadoresActivos.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemPrestadoresActivos.setText("Prestadores Activos");
+        jMenuItemPrestadoresActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemPrestadoresActivosActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemPrestadoresActivos);
+
+        jMenuItemGuardarPrestador.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemGuardarPrestador.setText("Guardar Prestador");
+        jMenuItemGuardarPrestador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGuardarPrestadorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemGuardarPrestador);
+
+        jMenuItemModificarPrestador.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemModificarPrestador.setText("Modificar Prestador");
+        jMenuItemModificarPrestador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarPrestadorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemModificarPrestador);
+
+        darDeAltaPrestador.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        darDeAltaPrestador.setText("Dar de alta a un Prestador");
+        darDeAltaPrestador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                darDeAltaPrestadorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(darDeAltaPrestador);
+
+        jMenuItemEliminarPrestador.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jMenuItemEliminarPrestador.setText("Eliminar Prestador");
+        jMenuItemEliminarPrestador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEliminarPrestadorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemEliminarPrestador);
 
         jMenuBar1.add(jMenu2);
 
@@ -206,7 +263,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jMenuItemAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarActionPerformed
         escritorio.removeAll();
         escritorio.repaint();
-        JInternalFrameAddEspecialidad internalView = new JInternalFrameAddEspecialidad();
+        JInternalFrameAddEspecialidad internalView = new JInternalFrameAddEspecialidad(ppe);
         internalView.setVisible(true);
         escritorio.add(internalView);
         escritorio.moveToFront(internalView);
@@ -338,6 +395,78 @@ public class MenuPrincipal extends javax.swing.JFrame {
       dispose();
     }//GEN-LAST:event_jMenu1SalirMouseClicked
 
+    private void jMenuPrestadoresPorEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrestadoresPorEspecialidadActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        PrestadoresPorEspecialidad ppe = new PrestadoresPorEspecialidad();
+        ppe.setVisible(true);
+        escritorio.add(ppe);
+        escritorio.moveToFront(ppe);
+        int x = (escritorio.getWidth() - ppe.getWidth()) / 2;
+        int y = (escritorio.getHeight() - ppe.getHeight()) / 2;
+        ppe.setLocation(x, y);
+    }//GEN-LAST:event_jMenuPrestadoresPorEspecialidadActionPerformed
+
+    private void jMenuItemPrestadoresActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemPrestadoresActivosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        PrestadoresActivos pa = new PrestadoresActivos();
+        pa.setVisible(true);
+        escritorio.add(pa);
+        escritorio.moveToFront(pa);
+        int x = (escritorio.getWidth() - pa.getWidth()) / 2;
+        int y = (escritorio.getHeight() - pa.getHeight()) / 2;
+        pa.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItemPrestadoresActivosActionPerformed
+
+    private void jMenuItemGuardarPrestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGuardarPrestadorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+
+        ppe.setVisible(true);
+        escritorio.add(ppe);
+        escritorio.moveToFront(ppe);
+        int x = (escritorio.getWidth() - ppe.getWidth()) / 2;
+        int y = (escritorio.getHeight() - ppe.getHeight()) / 2;
+        ppe.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItemGuardarPrestadorActionPerformed
+
+    private void jMenuItemModificarPrestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarPrestadorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ModificarPrestador mp= new ModificarPrestador();
+        mp.setVisible(true);
+        escritorio.add(mp);
+        escritorio.moveToFront(mp);
+        int x = (escritorio.getWidth() - mp.getWidth()) / 2;
+        int y = (escritorio.getHeight() - mp.getHeight()) / 2;
+        mp.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItemModificarPrestadorActionPerformed
+
+    private void darDeAltaPrestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_darDeAltaPrestadorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        DarDeAltaPrestador alta= new DarDeAltaPrestador();
+        alta.setVisible(true);
+        escritorio.add(alta);
+        escritorio.moveToFront(alta);
+        int x = (escritorio.getWidth() -alta.getWidth()) / 2;
+        int y = (escritorio.getHeight() -alta.getHeight()) / 2;
+        alta.setLocation(x, y);
+    }//GEN-LAST:event_darDeAltaPrestadorActionPerformed
+
+    private void jMenuItemEliminarPrestadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarPrestadorActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        EliminarPrestador ep = new EliminarPrestador();
+        ep.setVisible(true);
+        escritorio.add(ep);
+        escritorio.moveToFront(ep);
+        int x = (escritorio.getWidth() - ep.getWidth()) / 2;
+        int y = (escritorio.getHeight() - ep.getHeight()) / 2;
+        ep.setLocation(x, y);
+    }//GEN-LAST:event_jMenuItemEliminarPrestadorActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -375,9 +504,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem darDeAltaPrestador;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JMenu jGestionOrdenes;
-    private javax.swing.JMenuItem jGestionPrestadores;
     private javax.swing.JMenuItem jMGuardarAfiliado;
     private javax.swing.JMenu jMenu1Salir;
     private javax.swing.JMenu jMenu1VerAfiliados;
@@ -394,6 +523,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAgregar;
     private javax.swing.JMenuItem jMenuItemBuscar;
     private javax.swing.JMenuItem jMenuItemEditar;
+    private javax.swing.JMenuItem jMenuItemEliminarPrestador;
+    private javax.swing.JMenuItem jMenuItemGuardarPrestador;
+    private javax.swing.JMenuItem jMenuItemModificarPrestador;
+    private javax.swing.JMenuItem jMenuItemPrestadoresActivos;
+    private javax.swing.JMenuItem jMenuPrestadoresPorEspecialidad;
     // End of variables declaration//GEN-END:variables
  
     public void nuevaVista(String dni) {
@@ -405,6 +539,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int x = (escritorio.getWidth() - agregarAfiliado.getWidth()) / 2;
         int y = (escritorio.getHeight() - agregarAfiliado.getHeight()) / 2;
         agregarAfiliado.setLocation(x, y);
+    }
+    
+    public void nuevaVistaEspecialidad() {
+        escritorio.repaint();
+        JInternalFrameAddEspecialidad agregarEspecialidad = new JInternalFrameAddEspecialidad(ppe);
+        agregarEspecialidad.setVisible(true);
+        escritorio.add(agregarEspecialidad);
+        escritorio.moveToFront(agregarEspecialidad);
+        int x = (escritorio.getWidth() - agregarEspecialidad.getWidth()) / 2;
+        int y = (escritorio.getHeight() - agregarEspecialidad.getHeight()) / 2;
+        agregarEspecialidad.setLocation(x, y);
     }
     
 }

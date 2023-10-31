@@ -15,7 +15,7 @@ public class AfiliadoData {
     }
 
     public void guardarAfiliado(Afiliado afiliado) {
-        String sql = "INSERT INTO Afiliado (nombre, apellido, dni, estado) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO afiliado (nombre, apellido, dni, estado) VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, afiliado.getNombre());
@@ -37,7 +37,7 @@ public class AfiliadoData {
     }
 
     public void bajaAfiliado(int dni) {
-        String sql = "UPDATE Afiliado SET estado=0 WHERE dni=?";
+        String sql = "UPDATE afiliado SET estado=0 WHERE dni=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, dni);
@@ -56,7 +56,7 @@ public class AfiliadoData {
     }
 
     public void modificarAfiliadoSinEstado(Afiliado afiliado) {
-        String sql = "UPDATE Afiliado SET nombre=?, apellido=?, dni=? WHERE dni=?";
+        String sql = "UPDATE afiliado SET nombre=?, apellido=?, dni=? WHERE dni=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, afiliado.getNombre());
@@ -75,7 +75,7 @@ public class AfiliadoData {
         }
     }
     public void darDeAlta(Afiliado afiliado){
-        String sql = "UPDATE Afiliado SET estado=1 WHERE dni=?";
+        String sql = "UPDATE afiliado SET estado=1 WHERE dni=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, afiliado.getDni());
@@ -93,7 +93,7 @@ public class AfiliadoData {
     }
     
     public void darDeAlta(int dni) {
-        String sql = "UPDATE Afiliado SET estado=1 WHERE dni=?";
+        String sql = "UPDATE afiliado SET estado=1 WHERE dni=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, dni);
@@ -112,7 +112,7 @@ public class AfiliadoData {
     public List<Afiliado> listarAfiliadosActivos() {
         List<Afiliado> afiliados = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Afiliado WHERE estado = 1";
+            String sql = "SELECT * FROM afiliado WHERE estado = 1";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -134,7 +134,7 @@ public class AfiliadoData {
       public List<Afiliado> listarAfiliadosInactivos() {
         List<Afiliado> afiliados = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM Afiliado WHERE estado = 0";
+            String sql = "SELECT * FROM afiliado WHERE estado = 0";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
