@@ -83,12 +83,14 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
 
         jBBuscar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.jpg"))); // NOI18N
+        jBBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBuscarActionPerformed(evt);
             }
         });
 
+        jButtonAgregarAfiliado.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButtonAgregarAfiliado.setText("Agregar Afiliado");
         jButtonAgregarAfiliado.setEnabled(false);
         jButtonAgregarAfiliado.addActionListener(new java.awt.event.ActionListener() {
@@ -109,11 +111,6 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
         jComboBoxFormaPago.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jComboBoxFormaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxFormaPago.setSelectedIndex(-1);
-        jComboBoxFormaPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxFormaPagoActionPerformed(evt);
-            }
-        });
 
         jBGuardar.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jBGuardar.setText("Guardar");
@@ -135,12 +132,15 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel5.setText("Importe:");
 
+        jDateChooserCalendario.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel6.setText("Fecha:");
 
         jComboBoxPrestador.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jComboBoxPrestador.setToolTipText("");
 
+        jButtonLimpiar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButtonLimpiar.setText("Limpiar");
         jButtonLimpiar.setEnabled(false);
         jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,66 +159,70 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jBGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBSalir)
-                        .addGap(107, 107, 107))
+                        .addGap(132, 132, 132)
+                        .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel6))
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooserCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(132, 132, 132)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3))
-                                .addGap(36, 36, 36)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBoxPrestador, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBoxFormaPago, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTImporte, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel6))
-                                .addGap(64, 64, 64)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooserCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jBBuscar))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButtonAgregarAfiliado)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jButtonLimpiar))))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(49, Short.MAX_VALUE))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButtonLimpiar)
+                                    .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jButtonAgregarAfiliado))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jBGuardar)
+                            .addGap(76, 76, 76)
+                            .addComponent(jBSalir))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel3))
+                            .addGap(36, 36, 36)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jComboBoxPrestador, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jComboBoxFormaPago, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTImporte, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addComponent(jBBuscar))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregarAfiliado)
                     .addComponent(jButtonLimpiar))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooserCalendario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jDateChooserCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxPrestador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,11 +236,11 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTImporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBGuardar)
                     .addComponent(jBSalir))
-                .addGap(18, 18, 18))
+                .addGap(49, 49, 49))
         );
 
         jTDni.getAccessibleContext().setAccessibleDescription("dsdsfDS");
@@ -278,17 +282,27 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBBuscarActionPerformed
     
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        try {
+         try {
             java.util.Date fecha = jDateChooserCalendario.getDate();
             LocalDate fechaSeleccionada = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            prestadorSeleccionado = (Prestador) jComboBoxPrestador.getSelectedItem();
-            if (prestadorSeleccionado != null) {
-                comprarOrden(fechaSeleccionada);                
-            } else {
+            if (jComboBoxPrestador.getSelectedIndex() == 0) {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar un prestador");
+            } else if (jComboBoxFormaPago.getSelectedIndex()== 0) {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una forma de pago");
+            } else {
+                int dni = Integer.parseInt(jTDni.getText());
+                afiliadoActual = ad.buscarAfiliadoPorDni(dni);
+                prestadorSeleccionado = (Prestador) jComboBoxPrestador.getSelectedItem();
+                String formaPago = (String) jComboBoxFormaPago.getSelectedItem();
+                double importe = Double.parseDouble(jTImporte.getText());
+                Orden ordenActual = new Orden(fechaSeleccionada, formaPago, importe, afiliadoActual, prestadorSeleccionado, true);
+                od.guardarOrden(ordenActual);
+                limpiar();
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un importe");
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -301,10 +315,6 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
         limpiar();
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
-
-    private void jComboBoxFormaPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFormaPagoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxFormaPagoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
@@ -328,11 +338,12 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     private void cargarPrestadores() { //Carga ComboBox Prestadores
+         List <Prestador> prestadores = pd.listarPrestadoresActivos();
         String mensaje = "<Seleccione un Prestador>";
         Prestador mensajePrestador = new Prestador(-1, mensaje);
         jComboBoxPrestador.removeAllItems();
         jComboBoxPrestador.addItem(mensajePrestador);
-        for(Prestador prestador: listaP){
+        for(Prestador prestador: prestadores){
               jComboBoxPrestador.addItem(prestador);
         }
         jComboBoxPrestador.setRenderer(new DefaultListCellRenderer() { //Un "renderer" en Swing controla cómo se muestra cada elemento en el JComboBox. En este caso, se está personalizando la apariencia de los elementos del JComboBox.
@@ -354,23 +365,7 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
         jComboBoxFormaPago.addItem("Efectivo");
         jComboBoxFormaPago.addItem("Debito");   
     }
-    
-    public void comprarOrden(LocalDate fechaSeleccionada){
-        try{
-        if (jComboBoxFormaPago.getSelectedItem() == "<Seleccione un tipo de pago>"){
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una forma de pago");
-        } else {
-            String formaPago = (String) jComboBoxFormaPago.getSelectedItem();
-            double importe = Double.parseDouble(jTImporte.getText());
-            Orden ordenActual = new Orden(fechaSeleccionada, formaPago, importe, afiliadoActual, prestadorSeleccionado, true);
-            od.guardarOrden(ordenActual);
-            limpiar();
-        }
-        }catch (NumberFormatException nfe){
-            JOptionPane.showMessageDialog(this, "Debe ingresar un importe");
-        }
-    }
-    
+        
     private boolean validarLongitud(){
         // Validar Dni
         String dniS = jTDni.getText();
@@ -405,7 +400,6 @@ public class ComprarOrden extends javax.swing.JInternalFrame {
         jComboBoxFormaPago.setEnabled(true);
         jComboBoxFormaPago.setBackground(Color.WHITE);
         jTImporte.setEnabled(true);
-       // Utilidades.addPlaceHolder(jTDni, "Ingrese el DNI");
         jBGuardar.setEnabled(true);
         jButtonAgregarAfiliado.setEnabled(false);
     }

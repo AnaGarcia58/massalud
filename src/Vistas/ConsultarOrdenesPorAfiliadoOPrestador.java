@@ -204,7 +204,7 @@ public class ConsultarOrdenesPorAfiliadoOPrestador extends javax.swing.JInternal
             if (validarLongitud()) {
                 if (jRadioButtonPorAfiliado.isSelected()) {
                     int dni = Integer.parseInt(jTDni.getText());
-                    afiliadoActual = ad.buscarAfiliado(dni);
+                    afiliadoActual = ad.buscarAfiliadoPorDni(dni);
                     if (afiliadoActual == null) {
                         JOptionPane.showMessageDialog(this, "El Afiliado no existe");
                         limpiar();
@@ -292,6 +292,7 @@ public class ConsultarOrdenesPorAfiliadoOPrestador extends javax.swing.JInternal
     public void mostrarOrdenesPorAfiliado(){
         List<Orden> ordenesAfiliado = od.obtenerOrdenesPorAfiliado(afiliadoActual.getIdAfiliado());
         borrarFilas();
+         if(ordenesAfiliado.size() != 0){
         for (Orden orden : ordenesAfiliado) {
             modelo.addRow(new Object[]{
                 orden.getIdOrden(),
@@ -299,12 +300,16 @@ public class ConsultarOrdenesPorAfiliadoOPrestador extends javax.swing.JInternal
                 orden.getPrestador().getApellido(),
                 orden.getPrestador().getEspecialidad().getNombre()});                
         }
+         }else{
+              JOptionPane.showMessageDialog(this, "El Afiliado no tiene órdenes.");
+         }
         
     }
     
     public void mostrarOrdenesPorPrestador(){
         List<Orden> ordenesPrestador = od.obtenerOrdenesPorPrestador(prestadorActual.getIdPrestador());
         borrarFilas();
+        if(ordenesPrestador.size() != 0){
         for (Orden orden : ordenesPrestador) {
             modelo.addRow(new Object[]{
                 orden.getIdOrden(),
@@ -312,7 +317,9 @@ public class ConsultarOrdenesPorAfiliadoOPrestador extends javax.swing.JInternal
                 orden.getPrestador().getApellido(),
                 orden.getPrestador().getEspecialidad().getNombre()});                
         }
-        
+        }else{
+            JOptionPane.showMessageDialog(this, "El Prestador no tiene órdenes.");
+        }
     } 
     
     public void limpiar(){

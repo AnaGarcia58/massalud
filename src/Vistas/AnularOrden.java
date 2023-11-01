@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import AccesoData.AfiliadoData;
@@ -14,11 +13,12 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class AnularOrden extends javax.swing.JInternalFrame {
+
     private Afiliado afiliadoActual = null;
     private AfiliadoData ad;
     private OrdenData od = new OrdenData();
     DefaultTableModel modelo = new DefaultTableModel();
-    
+
     public AnularOrden() {
         initComponents();
         Utilidades.addPlaceHolder(jTDni, "Ingrese el DNI");
@@ -45,6 +45,7 @@ public class AnularOrden extends javax.swing.JInternalFrame {
         jButtonAnular = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setTitle("Anular Orden");
         setPreferredSize(new java.awt.Dimension(507, 482));
@@ -52,15 +53,16 @@ public class AnularOrden extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(153, 220, 153));
         jPanel1.setPreferredSize(new java.awt.Dimension(495, 446));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setText("Anular Órdenes");
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel2.setText("Dni:");
+        jLabel2.setText("Dni afiliado:");
 
         jTDni.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
 
         jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.jpg"))); // NOI18N
+        jButtonBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarActionPerformed(evt);
@@ -79,6 +81,8 @@ public class AnularOrden extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTOrdenesAfiliado.setRowHeight(30);
+        jTOrdenesAfiliado.setRowSelectionAllowed(false);
         jScrollPane1.setViewportView(jTOrdenesAfiliado);
 
         jButtonAnular.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -105,23 +109,13 @@ public class AnularOrden extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
+        jLabel3.setText("Por favor, ingrese el dni del afiliado:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel2)
-                        .addGap(67, 67, 67)
-                        .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButtonBuscar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -133,26 +127,48 @@ public class AnularOrden extends javax.swing.JInternalFrame {
                         .addComponent(jButton3))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(181, 181, 181)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(jButtonBuscar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonBuscar)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2)))
-                .addGap(27, 27, 27)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonBuscar)))
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAnular)
                     .addComponent(jButton3)
                     .addComponent(jButton1))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,7 +200,10 @@ public class AnularOrden extends javax.swing.JInternalFrame {
             }
         } catch (NumberFormatException nfe) {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un Dni válido");
+        } catch (NullPointerException ex) {
+            System.out.println("");
         }
+
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -198,7 +217,7 @@ public class AnularOrden extends javax.swing.JInternalFrame {
             od.anularOrden(idOrden);
             mostrarOrdenesPorAfiliado();
         } else {
-            JOptionPane.showMessageDialog(this, "Debe seleccionar una materia.");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un afiliado.");
         }
     }//GEN-LAST:event_jButtonAnularActionPerformed
 
@@ -216,6 +235,7 @@ public class AnularOrden extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTDni;
@@ -234,27 +254,33 @@ public class AnularOrden extends javax.swing.JInternalFrame {
         jTOrdenesAfiliado.setModel(modelo);
 
     }
+
     private void borrarFilas() {
         int filas = jTOrdenesAfiliado.getRowCount() - 1;
         for (; filas >= 0; filas--) {
             modelo.removeRow(filas);
         }
     }
-    
-    public void mostrarOrdenesPorAfiliado(){
+
+    public void mostrarOrdenesPorAfiliado() {
         List<Orden> ordenesAfiliado = od.obtenerOrdenesPorAfiliado(afiliadoActual.getIdAfiliado());
         borrarFilas();
-        for (Orden orden : ordenesAfiliado) {
-            modelo.addRow(new Object[]{
-                orden.getIdOrden(),
-                orden.getFecha(),
-                orden.getAfiliado().getApellido(),
-                orden.getPrestador().getApellido(),
-                orden.getPrestador().getEspecialidad().getNombre()});                
-        }     
+
+        if (ordenesAfiliado.size() != 0) {
+            for (Orden orden : ordenesAfiliado) {
+                modelo.addRow(new Object[]{
+                    orden.getIdOrden(),
+                    orden.getFecha(),
+                    orden.getAfiliado().getApellido(),
+                    orden.getPrestador().getApellido(),
+                    orden.getPrestador().getEspecialidad().getNombre()});
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El afiliado no tiene órdenes.");
+        }
     }
-    
-     private boolean validarLongitud(){
+
+    private boolean validarLongitud() {
         // Validar Dni
         String dniS = jTDni.getText();
         if (dniS.length() >= 9 || dniS.length() <= 6) {

@@ -19,6 +19,13 @@ public class Prestador {
         this.indice = indice;
         this.mensaje = mensaje;
     }
+    
+    public Prestador(int idPrestador, String nombre, String apellido, int dni) {
+        this.idPrestador = idPrestador;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+    }
 
     public Prestador(int idPrestador, String nombre, String apellido, int dni, boolean estado, Especialidad especialidad) {
         this.idPrestador = idPrestador;
@@ -85,9 +92,9 @@ public class Prestador {
         this.especialidad = especialidad;
     }
 
-    @Override
+ @Override
     public String toString() {
-        return "Prestador{" + "idPrestador=" + idPrestador + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", estado=" + estado + ", especialidad=" + especialidad + '}';
+        return "Prestador: " + "idPrestador: " + idPrestador + ", nombre: " + nombre + ", apellido: " + apellido + ", dni: " + dni + ", estado: " + estado ;
     }
     
      public String obtenerPrestadorCombo(){

@@ -44,18 +44,12 @@ public class PrestadorData {
     public List<Prestador> listarPrestadoresActivos() {
         List<Prestador> prestadores = new ArrayList<>();
         try {
-            String sql = "SELECT * FROM prestador WHERE estado=1";
+            String sql = "SELECT p.idPrestador, p.nombre, p.apellido, p.dni,p.estado, e.idEspecialidad FROM prestador p JOIN especialidad e ON p.idEspecialidad = e.idEspecialidad WHERE p.estado=1";
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Prestador prestador = new Prestador();
-                prestador.setIdPrestador(rs.getInt("idPrestador"));
-                prestador.setNombre(rs.getString("nombre"));
-                prestador.setApellido(rs.getString("apellido"));
-                prestador.setDni(rs.getInt("dni"));
-                prestador.setEstado(rs.getBoolean("estado"));
-              //  prestador.setEspecialidad(rs.getInt("idEspecialidad"));//REVER!!!!!!!!
-
+                Especialidad especialidad = new Especialidad(rs.getInt("e.idEspecialidad"));
+                Prestador prestador = new Prestador(rs.getInt("p.idPrestador"),rs.getString("p.nombre"),rs.getString("p.apellido"),rs.getInt("p.dni"),rs.getBoolean("p.estado"),especialidad);
                 prestadores.add(prestador);
             }
             ps.close();
@@ -64,6 +58,7 @@ public class PrestadorData {
         }
         return prestadores;
     }
+
 
     public List<Prestador> listarPrestadoresPorEspecialidad() {
         List<Prestador> prestadores = new ArrayList<>();

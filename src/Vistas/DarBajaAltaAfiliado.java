@@ -244,7 +244,7 @@ public class DarBajaAltaAfiliado extends javax.swing.JInternalFrame {
     private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
         AfiliadoData ad = new AfiliadoData();
         if (validarDni()) {
-            Afiliado afiliado = ad.buscarAfiliado(Integer.valueOf(jTextFieldDNI.getText()));
+            Afiliado afiliado = ad.buscarAfiliados(Integer.valueOf(jTextFieldDNI.getText()));
             if (afiliado != null) {
                 jTextFieldNombre.setText(afiliado.getNombre());
                 jTextFieldApellido.setText(afiliado.getApellido());

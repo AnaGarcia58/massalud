@@ -1,4 +1,3 @@
-
 package AccesoData;
 
 import Entidades.Afiliado;
@@ -16,16 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class OrdenData {
+
     private Connection connection = null;
     private AfiliadoData ad = new AfiliadoData();
-    private PrestadorData pd= new PrestadorData();
+    private PrestadorData pd = new PrestadorData();
 
     public OrdenData() {
         this.connection = Conexion.getConexion();
     }
-    
+
     public void guardarOrden(Orden orden) {
 
         try {
@@ -60,7 +59,7 @@ public class OrdenData {
             JOptionPane.showMessageDialog(null, "Error al cargar la Orden: " + ex.getMessage());
         }
     }
-    
+
     private boolean comprobarPrestadorFecha(Orden orden) throws GenericException, SQLException {
 
         PreparedStatement preparedStatement = null;
@@ -82,13 +81,13 @@ public class OrdenData {
             return resultado;
         }
     }
-    
-    public void anularOrden(int idOrden){
+
+    public void anularOrden(int idOrden) {
 //        String sql = "UPDATE orden SET estado = false WHERE idAfiliado = ? AND idPrestador = ?;";
         String sql = "UPDATE orden SET estado = false WHERE idOrden = ?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1,idOrden);
+            preparedStatement.setInt(1, idOrden);
 //            preparedStatement.setInt(1, idAfilidado);
 //            preparedStatement.setInt(2, idPrestador);
             int resultado = preparedStatement.executeUpdate();
@@ -102,7 +101,7 @@ public class OrdenData {
         }
     }
 
-    public List<Orden> obtenerOrdenes(String sql){
+    public List<Orden> obtenerOrdenes(String sql) {
         List<Orden> listaOrdenes = new ArrayList<>();
         //String sql = "SELECT * FROM orden";
         PreparedStatement ps;
@@ -123,29 +122,29 @@ public class OrdenData {
                 listaOrdenes.add(orden);
             }
             ps.close();
-            }catch (SQLException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla orden");
         }
         return listaOrdenes;
     }
-    public List<Orden> obtenerOrdenesPorAfiliado(int id){
-      String sql = "SELECT * FROM orden o  "
+
+    public List<Orden> obtenerOrdenesPorAfiliado(int id) {
+        String sql = "SELECT * FROM orden o  "
                 + "JOIN afiliado a ON o.idAfiliado = a.idAfiliado "
                 + "JOIN prestador p ON o.idPrestador = p.idPrestador "
                 + "where o.estado = 1 and a.idAfiliado = " + id;
-        return this.obtenerOrdenes(sql);  
+         return this.obtenerOrdenes(sql);
     }
-    
-    public List<Orden> obtenerOrdenesPorPrestador(int id){
+
+    public List<Orden> obtenerOrdenesPorPrestador(int id) {
         String sql = "SELECT * FROM orden o  "
                 + "JOIN prestador p ON o.idPrestador = p.idPrestador "
                 + "JOIN afiliado a ON o.idAfiliado = a.idAfiliado "
-                + "where o.estado = 1 and p.idPrestador = " + id;        
+                + "where o.estado = 1 and p.idPrestador = " + id;
         return this.obtenerOrdenes(sql);
     }
-    
- 
-    public List<Orden> obtenerOrdenPorFecha(LocalDate fecha){
+
+    public List<Orden> obtenerOrdenPorFecha(LocalDate fecha) {
         List<Orden> listaOrdenesPorFecha = new ArrayList<>();
         String sql = "SELECT * FROM orden where fecha = ? and estado = 1";
         try {
@@ -166,13 +165,10 @@ public class OrdenData {
                 listaOrdenesPorFecha.add(orden);
             }
             ps.close();
-            }catch (SQLException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla orden");
         }
-        return listaOrdenesPorFecha;  
+        return listaOrdenesPorFecha;
     }
-    
-   
-  
-    
+
 }

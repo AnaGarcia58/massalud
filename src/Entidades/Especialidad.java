@@ -15,7 +15,6 @@ public class Especialidad {
     }
     
     public Especialidad(int idEspecialidad, String nombre) {
-
         this.idEspecialidad = idEspecialidad;
         this.nombre = nombre;
     }

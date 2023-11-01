@@ -41,8 +41,6 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTextFieldIdEspecialidad = new javax.swing.JTextField();
-        jButtonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
@@ -63,21 +61,6 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel2.setText("IdEspecialidad:");
-
-        jTextFieldIdEspecialidad.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jTextFieldIdEspecialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIdEspecialidadActionPerformed(evt);
-            }
-        });
-
-        jButtonBuscar.setForeground(new java.awt.Color(153, 220, 153));
-        jButtonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.jpg"))); // NOI18N
-        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBuscarActionPerformed(evt);
-            }
-        });
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -140,14 +123,6 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
         });
 
         jComboBoxEspecialidades.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jComboBoxEspecialidades.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jComboBoxEspecialidadesFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jComboBoxEspecialidadesFocusLost(evt);
-            }
-        });
         jComboBoxEspecialidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxEspecialidadesActionPerformed(evt);
@@ -245,7 +220,7 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabelErrorEdit)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonEditar)
                     .addComponent(jButtonSalir))
                 .addGap(52, 52, 52))
@@ -264,18 +239,6 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldIdEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdEspecialidadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdEspecialidadActionPerformed
-
-    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreActionPerformed
-
-    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
     private void jComboBoxEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEspecialidadesActionPerformed
         
@@ -327,16 +290,8 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
 
     private void jTextFieldNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusGained
         clearLabel();
-        //enableButtonEdit();
-    }//GEN-LAST:event_jTextFieldNombreFocusGained
-
-    private void jComboBoxEspecialidadesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxEspecialidadesFocusGained
-        //clearLabel();
-    }//GEN-LAST:event_jComboBoxEspecialidadesFocusGained
-
-    private void jComboBoxEspecialidadesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBoxEspecialidadesFocusLost
         
-    }//GEN-LAST:event_jComboBoxEspecialidadesFocusLost
+    }//GEN-LAST:event_jTextFieldNombreFocusGained
 
     private void jRadioButtonEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEstadoActionPerformed
 
@@ -395,9 +350,12 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_jTextFieldNombreKeyPressed
 
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JComboBox<Especialidad> jComboBoxEspecialidades;
@@ -415,7 +373,6 @@ public class JInternalFrameEditEspecialidad extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButtonEstado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextFieldIdEspecialidad;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 
