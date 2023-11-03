@@ -207,7 +207,7 @@ public class ModificarAfiliado extends javax.swing.JInternalFrame {
     private void jButton1BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1BuscarActionPerformed
         AfiliadoData ad = new AfiliadoData();
         if (validarDni()) {
-            Afiliado afiliado = ad.buscarAfiliado(Integer.valueOf(jTextField1DniABuscar.getText()));
+            Afiliado afiliado = ad.buscarAfiliados(Integer.valueOf(jTextField1DniABuscar.getText()));
             if (afiliado != null) {
                 jTextFieldNombre.setText(afiliado.getNombre());
                 nombreOriginal = afiliado.getNombre();
